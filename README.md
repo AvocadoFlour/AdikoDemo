@@ -1,7 +1,7 @@
 # AdikoDemo
 Just pull the project,
 everything should work right away without any manual scaffolding.
-
+___________
 TODO:
 - Odobrenja za bazu*
 - Upariti poruke s Primateljima (id primatelja u poruku, ne samo ime i prezime, fensi nije potrebno po specifikaciji)
