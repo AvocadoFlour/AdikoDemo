@@ -21,8 +21,8 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
+           <td>
+                <input id=@item.Id name="Send" type="checkbox" value="false" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NameSurname)
@@ -30,11 +30,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
-            <td>
+            @*<td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            </td>*@
         </tr>
 }
     </tbody>

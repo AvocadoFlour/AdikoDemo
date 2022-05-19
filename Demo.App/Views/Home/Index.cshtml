@@ -6,16 +6,83 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    
-    @Html.RenderPartialAsync("_ReceiverView", Model)
 
-    @*@foreach(var item in Model){
-        {
-            <div>
-                @item.NameSurname
-                </div>
-        }
-    }*@
+@*        @{await Html.RenderPartialAsync("Receiver/_ReceiversView", Model);}
+*@
+        @*@foreach(var item in Model){
+            {
+                <div>
+                    @item.NameSurname
+                    </div>
+            }
+        }*@
 
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Send message to
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NameSurname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Number)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                    <tr>
+                       <td>
+                            <input id=@item.Id name="Send" type="checkbox" value="false" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameSurname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Number)
+                        </td>
+                        @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        </td>*@
+                    </tr>
+            }
+                @using (Html.BeginForm("SendMessage", "Home", FormMethod.Post))
+            {
+                <textarea data-limit-input="160" style="height:200px;width:400px;display:block;margin-left:auto;margin-right:auto" name="messageContent" id="messageText"></textarea>
+                <span>
+                    0 of 160 characters used.
+                </span>
+                <span>
+                    <button id="sendMessageButton" type="submit">Send message</button>
+                </span>
+            }
+            </tbody>
+        </table>
+
+
+        
 </div>
+
+@section scripts{
+
+<script type="text/javascript">
+    $("textarea[data-limit-input]").keyup(function () {
+    var charLength = $(this).val().length;
+    var charLimit = $(this).attr("data-limit-input");
+// Displays count
+    $(this).next("span").html(charLength + " of " + charLimit + " characters used");
+// Alert when max is reached
+    if ($(this).val().length > charLimit) {
+        $(this).next("span").html("<strong>You may only have up to " + charLimit + " characters.</strong>");
+        $("#sendMessageButton").attr("disabled", true);
+    }  else {
+            $("#sendMessageButton").removeAttr("disable");
+        }
+});
+</script>
+}

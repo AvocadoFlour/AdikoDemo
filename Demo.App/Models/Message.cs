@@ -5,9 +5,6 @@ namespace Demo.App.Models
 {
     public class Message
     {
-        [JsonPropertyName("Id")]
-        public int Id { get; set; }
-
         [JsonPropertyName("SentTime")]
         public DateTime SentTime { get; set; }
 

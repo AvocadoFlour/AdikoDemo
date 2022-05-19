@@ -41,6 +41,15 @@ namespace Demo.App.Controllers
             return View(receiversInfo);
         }
 
+        public async Task<ActionResult> SendMessage(List<int> recipients, string messageContent)
+        {
+            foreach(int recipient in recipients)
+            {
+
+            }
+            return View("SuccesS");
+        }
+
         public IActionResult Privacy()
         {
             return View();
