@@ -17,10 +17,12 @@ namespace Demo.Api
             #endregion
 
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddScoped<AppDbContext, AppDbContext>();
 
             // Add services to the container.
 
             builder.Services.AddControllers();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
